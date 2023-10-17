@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "repeat": ["Females with Secondary Education","Female Labour Force Participation","Female Share of Seats in Parliament"],
+  "columns": 3,
+  "spec": {
+    "width": 250,
+    "height": 250,
+    "layer": [
+      {
+        "data": {"url": "data/other_developments.csv"},
+        "mark": {"type": "point", "size": 5, "fillOpacity": 1},
+        "encoding": {
+          "x": {"field": "Gender Inequality Index", "type": "quantitative", "scale": {"domain": [0,1]}},
+          "y": {"field": {"repeat": "repeat"}, "type": "quantitative", "scale": {"domain": [0,1]}},
+          "fill": {"field": "Continent", "type": "nominal", "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#37b84a",
+              "#377eb8",
+              "#a65628"
+            ]
+          }},
+          "stroke": {"field": "Continent", "type": "nominal", "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#37b84a",
+              "#377eb8",
+              "#a65628"
+            ]
+          }},
+          "tooltip": [
+            {"field": "Country", "type": "nominal"},
+            {"field": "Gender Inequality Index", "type": "quantitative"},
+            {"field": {"repeat": "repeat"}, "type": "quantitative"}
+          ]
+        }
+      }
+    ]
+  },
+  "config": {}
+}
